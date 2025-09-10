@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Farm Monitor Dashboard</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body { font-family: Arial, sans-serif; margin: 18px; background:#f7f9fc; color:#111; }
+    .card { background:white; padding:16px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.06); margin-bottom:12px; }
+    .row { display:flex; gap:12px; flex-wrap:wrap; }
+    .col { flex:1 1 300px; }
+    button { padding:8px 12px; border-radius:6px; border:none; background:#2d89ff; color:white; cursor:pointer; }
+    pre { background:#f2f4f7; padding:8px; border-radius:6px; overflow:auto; }
+    canvas { max-width:100%; height:260px; }
+  </style>
+</head>
+<body>
+  <h2>Farm Monitor Dashboard</h2>
+
+  <div class="card row">
+    <div class="col">
+      <h3>Latest Reading (simulated)</h3>
+      <div id="latest" style="font-size:14px"></div>
+      <div style="margin-top:10px;">
+        <button id="btn-refresh">Refresh Latest</button>
+        <button id="btn-store" style="background:#28a745">Generate & Store (simulate sensor)</button>
+        <span id="store-result" style="margin-left:10px"></span>
+      </div>
+    </div>
+
+    <div class="col">
+      <h3>Historical (last N days)</h3>
+      <label>Days: <input id="days" type="number" value="7" min="1" max="365" style="width:60px;"></label>
+      <button id="btn-get-history">Load History</button>
+      <div style="margin-top:10px;">
+        <canvas id="ndviChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Raw Response (for debug)</h3>
+    <pre id="raw"></pre>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
